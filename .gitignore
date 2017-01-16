@@ -120,7 +120,6 @@ tags
 moc_*.cpp
 qrc_*.cpp
 ui_*.h
-Makefile*
 *build-*
 
 # QtCreator
@@ -164,7 +163,6 @@ CMakeCache.txt
 CMakeFiles
 CMakeScripts
 Testing
-Makefile
 cmake_install.cmake
 install_manifest.txt
 compile_commands.json
