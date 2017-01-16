@@ -1,0 +1,14 @@
+#!/bin/sh
+
+echo "set QT PATH"
+
+
+export QTDIR=/home/dengjs/dowork/qt-everywhere-opensource-src-4.7.3/qt
+export PATH=$QTDIR/bin:$PATH
+export LD_LIBRARY_PATH=$QTDIR/lib:$LD_LIBRARY_PATH
+export QMAKESPEC=$QTDIR/mkspecs/qws/linux-arm-gnueabi-g++
+
+
+
+
+

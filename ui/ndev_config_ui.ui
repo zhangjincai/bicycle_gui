@@ -1,0 +1,1235 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>NdevConfigClass</class>
+ <widget class="QDialog" name="NdevConfigClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>NdevConfig</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1024</width>
+     <height>768</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../bicycle.qrc">:/image/function_background.png</pixmap>
+   </property>
+   <property name="scaledContents">
+    <bool>false</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>400</x>
+     <y>10</y>
+     <width>191</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>22</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 112, 0);</string>
+   </property>
+   <property name="text">
+    <string>节 点 机 配 置</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>981</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>70</y>
+     <width>211</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>本机IP地址</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>191</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>IP地址：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_localIpaddr</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEdit_localIpaddr">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_3">
+       <property name="text">
+        <string>子网掩码：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_localNetmask</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_localNetmask">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_4">
+       <property name="text">
+        <string>默认网关：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_localGateway</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEdit_localGateway">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_23">
+    <property name="geometry">
+     <rect>
+      <x>130</x>
+      <y>160</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>注：设备重启</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_2">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>70</y>
+     <width>211</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>WIFI-IP地址</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>21</y>
+      <width>191</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_2">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_6">
+       <property name="text">
+        <string>IP地址：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_wifiIpaddr</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEdit_wifiIpaddr">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_7">
+       <property name="text">
+        <string>子网掩码：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_wifiNetmask</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_wifiNetmask">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_8">
+       <property name="text">
+        <string>默认网关：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEdit_wifiGateway">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_3">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>70</y>
+     <width>251</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>自行车中心地址</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>231</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_3">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_9">
+       <property name="text">
+        <string>负载均衡一IP：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="2">
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>1</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLineEdit" name="lineEdit_loadServ1Ipaddr">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="label_10">
+       <property name="text">
+        <string>负载均衡一端口：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_loadServ1Port</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_12">
+       <property name="text">
+        <string>负载均衡二IP：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <spacer name="horizontalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>1</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLineEdit" name="lineEdit_loadServ2Ipaddr">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QLabel" name="label_11">
+       <property name="text">
+        <string>负载均衡二端口：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_loadServ2Port</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="lineEdit_loadServ1Port">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="3">
+      <widget class="QLineEdit" name="lineEdit_loadServ2Port">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="Line" name="line_2">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>270</y>
+     <width>981</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_4">
+   <property name="geometry">
+    <rect>
+     <x>770</x>
+     <y>70</y>
+     <width>211</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>FTP地址</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>191</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_4">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>FTP地址：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_ftpIpaddr</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="2">
+      <widget class="QLineEdit" name="lineEdit_ftpIpaddr">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_14">
+       <property name="text">
+        <string>端   口：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_ftpPort</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_ftpPort">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_16">
+       <property name="text">
+        <string>密  码：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_ftpUserPasswd</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <widget class="QLineEdit" name="lineEdit_ftpUserName">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>16</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+       <property name="readOnly">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1" colspan="2">
+      <widget class="QLineEdit" name="lineEdit_ftpUserPasswd">
+       <property name="enabled">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>16</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>100</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_15">
+       <property name="text">
+        <string>用户名：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_ftpUserName</cstring>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QLabel" name="label_ndevConfigShow">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>700</y>
+     <width>521</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>文泉驿正黑</family>
+     <pointsize>18</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_ndevConfigSetup">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>710</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>配置设置</string>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_5">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>290</y>
+     <width>211</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>节点机参数设置</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>26</y>
+      <width>191</width>
+      <height>131</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_6">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_18">
+       <property name="text">
+        <string>负载均衡超时时间：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_loadSoTimeout</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEdit_loadSoTimeout">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>3</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>中心心跳间隔：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_centerHeartTime</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_centerHeartTime">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>3</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_20">
+       <property name="text">
+        <string>时钟闸值(10~60秒)：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_timerGateValue</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLineEdit" name="lineEdit_timerGateValue">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_21">
+       <property name="text">
+        <string>终端编号：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_termId</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLineEdit" name="lineEdit_termId">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QLabel" name="label_28">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>164</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>注：设备重启</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_6">
+   <property name="geometry">
+    <rect>
+     <x>255</x>
+     <y>290</y>
+     <width>181</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>锁桩参数设置</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>28</y>
+      <width>161</width>
+      <height>151</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_5">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_25">
+       <property name="text">
+        <string>CAN波特率：</string>
+       </property>
+       <property name="buddy">
+        <cstring>checkBox_50kbps</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="2">
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QCheckBox" name="checkBox_50kbps">
+         <property name="text">
+          <string>50kbps</string>
+         </property>
+         <property name="checked">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBox_125kbps">
+         <property name="text">
+          <string>125kbps</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBox_250kbps">
+         <property name="focusPolicy">
+          <enum>Qt::StrongFocus</enum>
+         </property>
+         <property name="text">
+          <string>250kbps</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="checkBox_500kbps">
+         <property name="text">
+          <string>500kbps</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item row="1" column="0" colspan="2">
+      <widget class="QLabel" name="label_27">
+       <property name="text">
+        <string>锁桩心跳间隔：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_stakeHeartTime</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLineEdit" name="lineEdit_stakeHeartTime">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>3</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_24">
+       <property name="text">
+        <string>锁桩数量：</string>
+       </property>
+       <property name="buddy">
+        <cstring>lineEdit_stakeQuantity</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="2">
+      <widget class="QLineEdit" name="lineEdit_stakeQuantity">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_7">
+   <property name="geometry">
+    <rect>
+     <x>451</x>
+     <y>290</y>
+     <width>131</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>网络接入设置</string>
+   </property>
+   <widget class="QLabel" name="label_22">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>160</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>注：设备重启</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>30</y>
+      <width>115</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_7">
+     <item row="0" column="0" rowspan="2">
+      <widget class="QLabel" name="label_26">
+       <property name="text">
+        <string>接入方式：</string>
+       </property>
+       <property name="buddy">
+        <cstring>checkBox_50kbps</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QCheckBox" name="checkBox_selectWireless">
+       <property name="text">
+        <string>无线</string>
+       </property>
+       <property name="checked">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QCheckBox" name="checkBox_selectWired">
+       <property name="text">
+        <string>有线</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_8">
+   <property name="geometry">
+    <rect>
+     <x>598</x>
+     <y>290</y>
+     <width>191</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>代理服务器设置</string>
+   </property>
+   <widget class="QLabel" name="label_29">
+    <property name="geometry">
+     <rect>
+      <x>110</x>
+      <y>160</y>
+      <width>81</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>注：设备重启</string>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>12</x>
+      <y>24</y>
+      <width>171</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_8">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_30">
+       <property name="text">
+        <string>中心地址：</string>
+       </property>
+       <property name="buddy">
+        <cstring>checkBox_50kbps</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEdit_lntIpaddr">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>15</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_31">
+       <property name="text">
+        <string>中心端口：</string>
+       </property>
+       <property name="buddy">
+        <cstring>checkBox_50kbps</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_lntServ1Port">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>5</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_9">
+   <property name="geometry">
+    <rect>
+     <x>804</x>
+     <y>290</y>
+     <width>191</width>
+     <height>191</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>灯箱控制</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>25</y>
+      <width>170</width>
+      <height>48</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_10">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_36">
+       <property name="text">
+        <string>开启时间：</string>
+       </property>
+       <property name="buddy">
+        <cstring>checkBox_50kbps</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLineEdit" name="lineEdit_lightCtrlTimeEnable0">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="2">
+      <widget class="QLabel" name="label_13">
+       <property name="text">
+        <string>：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="3">
+      <widget class="QLineEdit" name="lineEdit_lightCtrlTimeEnable1">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_37">
+       <property name="text">
+        <string>关闭时间：</string>
+       </property>
+       <property name="buddy">
+        <cstring>checkBox_50kbps</cstring>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLineEdit" name="lineEdit_lightCtrlTimeDisenable0">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLabel" name="label_35">
+       <property name="text">
+        <string>：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLineEdit" name="lineEdit_lightCtrlTimeDisenable1">
+       <property name="enabled">
+        <bool>true</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="maxLength">
+        <number>2</number>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <tabstops>
+  <tabstop>lineEdit_localIpaddr</tabstop>
+  <tabstop>lineEdit_localNetmask</tabstop>
+  <tabstop>lineEdit_localGateway</tabstop>
+  <tabstop>lineEdit_wifiIpaddr</tabstop>
+  <tabstop>lineEdit_wifiNetmask</tabstop>
+  <tabstop>lineEdit_wifiGateway</tabstop>
+  <tabstop>lineEdit_loadServ1Ipaddr</tabstop>
+  <tabstop>lineEdit_loadServ1Port</tabstop>
+  <tabstop>lineEdit_loadServ2Ipaddr</tabstop>
+  <tabstop>lineEdit_loadServ2Port</tabstop>
+  <tabstop>lineEdit_ftpIpaddr</tabstop>
+  <tabstop>lineEdit_ftpPort</tabstop>
+  <tabstop>lineEdit_ftpUserName</tabstop>
+  <tabstop>lineEdit_ftpUserPasswd</tabstop>
+  <tabstop>lineEdit_loadSoTimeout</tabstop>
+  <tabstop>lineEdit_centerHeartTime</tabstop>
+  <tabstop>lineEdit_timerGateValue</tabstop>
+  <tabstop>lineEdit_termId</tabstop>
+  <tabstop>checkBox_50kbps</tabstop>
+  <tabstop>checkBox_125kbps</tabstop>
+  <tabstop>checkBox_250kbps</tabstop>
+  <tabstop>checkBox_500kbps</tabstop>
+  <tabstop>lineEdit_stakeHeartTime</tabstop>
+  <tabstop>lineEdit_stakeQuantity</tabstop>
+  <tabstop>checkBox_selectWireless</tabstop>
+  <tabstop>checkBox_selectWired</tabstop>
+  <tabstop>lineEdit_lntIpaddr</tabstop>
+  <tabstop>lineEdit_lntServ1Port</tabstop>
+  <tabstop>lineEdit_lightCtrlTimeEnable0</tabstop>
+  <tabstop>lineEdit_lightCtrlTimeEnable1</tabstop>
+  <tabstop>lineEdit_lightCtrlTimeDisenable0</tabstop>
+  <tabstop>lineEdit_lightCtrlTimeDisenable1</tabstop>
+  <tabstop>pushButton_ndevConfigSetup</tabstop>
+ </tabstops>
+ <resources>
+  <include location="../bicycle.qrc"/>
+ </resources>
+ <connections/>
+</ui>

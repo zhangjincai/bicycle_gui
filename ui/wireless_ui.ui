@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WirelessClass</class>
+ <widget class="QDialog" name="WirelessClass">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1024</width>
+    <height>768</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>1024</width>
+    <height>768</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>wireless</string>
+  </property>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1041</width>
+     <height>768</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="pixmap">
+    <pixmap resource="../bicycle.qrc">:/image/function_background.png</pixmap>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_1">
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>10</y>
+     <width>181</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>华文中宋</family>
+     <pointsize>22</pointsize>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 112, 0);</string>
+   </property>
+   <property name="text">
+    <string>无 线 信 息</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="Line" name="line">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>50</y>
+     <width>981</width>
+     <height>16</height>
+    </rect>
+   </property>
+   <property name="orientation">
+    <enum>Qt::Horizontal</enum>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox_1">
+   <property name="geometry">
+    <rect>
+     <x>20</x>
+     <y>80</y>
+     <width>541</width>
+     <height>269</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>3G/4G无线信息</string>
+   </property>
+   <widget class="Line" name="line_4">
+    <property name="geometry">
+     <rect>
+      <x>129</x>
+      <y>22</y>
+      <width>20</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="Line" name="line_5">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>23</y>
+      <width>20</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Vertical</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>23</y>
+      <width>121</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_9">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_24">
+       <property name="text">
+        <string>接入方式：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_23">
+       <property name="text">
+        <string>信号强度：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2">
+      <widget class="QLabel" name="label_wlFer">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>99</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1" colspan="2">
+      <widget class="QLabel" name="label_wlUimCardStat">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>无效</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLabel" name="label_wlRssi">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>0</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1" colspan="2">
+      <widget class="QLabel" name="label_wlDialStat">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>已拨号</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0" colspan="2">
+      <widget class="QLabel" name="label_30">
+       <property name="text">
+        <string>数据帧出错比例：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="2">
+      <widget class="QLabel" name="label_wlAccessPattern">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>无线</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_17">
+       <property name="text">
+        <string>拨号状态：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_21">
+       <property name="text">
+        <string>UIM卡状态：</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_2">
+    <property name="geometry">
+     <rect>
+      <x>148</x>
+      <y>23</y>
+      <width>201</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_10">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_31">
+       <property name="text">
+        <string>漫游状态：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1" colspan="3">
+      <widget class="QLabel" name="label_wlRoamStatus">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>非漫游状态</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0" colspan="3">
+      <widget class="QLabel" name="label_19">
+       <property name="text">
+        <string>系统服务状态：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="3">
+      <widget class="QLabel" name="label_wlSrvStatus">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>有限制的区域服务 </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0" colspan="3">
+      <widget class="QLabel" name="label_33">
+       <property name="text">
+        <string>系统服务域：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="3">
+      <widget class="QLabel" name="label_wlSrvDomain">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string> PS+CS 服务</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0" colspan="2">
+      <widget class="QLabel" name="label_35">
+       <property name="text">
+        <string>系统模式：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2" colspan="2">
+      <widget class="QLabel" name="label_wlSysMode">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>CDMA/HDR HYBRID </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0" colspan="2">
+      <widget class="QLabel" name="label_39">
+       <property name="text">
+        <string>使用通道：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="2" colspan="2">
+      <widget class="QLabel" name="label_wlUsingChannel">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_4">
+    <property name="geometry">
+     <rect>
+      <x>369</x>
+      <y>23</y>
+      <width>171</width>
+      <height>141</height>
+     </rect>
+    </property>
+    <layout class="QGridLayout" name="gridLayout_12">
+     <item row="0" column="0">
+      <widget class="QLabel" name="label_41">
+       <property name="text">
+        <string>使用接口：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="0" column="1">
+      <widget class="QLabel" name="label_wlUsingInterface">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>1</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLabel" name="label_37">
+       <property name="text">
+        <string>本地地址：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="1">
+      <widget class="QLabel" name="label_wllLocalIpAddress">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>143.98.128.64</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="0">
+      <widget class="QLabel" name="label_43">
+       <property name="text">
+        <string>远程地址：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="2" column="1">
+      <widget class="QLabel" name="label_wlRemoteIpAddress">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>143.98.128.65</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLabel" name="label_45">
+       <property name="text">
+        <string>主域名：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="1">
+      <widget class="QLabel" name="label_wlPrimarynsAddress">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>202.96.128.143</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="0">
+      <widget class="QLabel" name="label_44">
+       <property name="text">
+        <string>次域名：</string>
+       </property>
+      </widget>
+     </item>
+     <item row="4" column="1">
+      <widget class="QLabel" name="label_wlSecondaryDnsAddress">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>8.8.8.8</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>11</x>
+      <y>180</y>
+      <width>521</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_26">
+       <property name="text">
+        <string>硬件版本：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_wlHwver">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string> MC271XMB_ D  </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_28">
+       <property name="text">
+        <string>软件版本：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_wlCgmr">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>MC271X_LM8ADA14_CTAT </string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget_3">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>210</y>
+      <width>521</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_2">
+     <item>
+      <widget class="QLabel" name="label_27">
+       <property name="text">
+        <string>最后一次拨号时间：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_wlLastDialTime">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>0000-00-00 00:00:00</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_29">
+       <property name="text">
+        <string>最后一次断线时间：</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="label_wlLastDisconTime">
+       <property name="styleSheet">
+        <string notr="true">color: rgb(0, 0, 255);</string>
+       </property>
+       <property name="text">
+        <string>0000-00-00 00:00:00</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <widget class="QPushButton" name="pushButton_manualRefresh">
+   <property name="geometry">
+    <rect>
+     <x>40</x>
+     <y>700</y>
+     <width>121</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>手动刷新(确定键)</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_wirelessShow">
+   <property name="geometry">
+    <rect>
+     <x>270</x>
+     <y>700</y>
+     <width>521</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>文泉驿正黑</family>
+     <pointsize>18</pointsize>
+     <weight>50</weight>
+     <bold>false</bold>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: rgb(0, 0, 255);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QGroupBox" name="groupBox">
+   <property name="geometry">
+    <rect>
+     <x>580</x>
+     <y>80</y>
+     <width>271</width>
+     <height>269</height>
+    </rect>
+   </property>
+   <property name="title">
+    <string>GPS信息</string>
+   </property>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>241</width>
+      <height>211</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_3">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout">
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="text">
+          <string>经度：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_7">
+         <property name="text">
+          <string>经度方向：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_3">
+         <property name="text">
+          <string>纬度：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_9">
+         <property name="text">
+          <string>纬度方向：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_4">
+         <property name="text">
+          <string>时间：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_5">
+         <property name="text">
+          <string>日期：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_6">
+         <property name="text">
+          <string>GPS状态：</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_8">
+         <property name="text">
+          <string>定位卫星数：</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QLabel" name="label_gpsLongitude">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 255);</string>
+         </property>
+         <property name="text">
+          <string>113.1212</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_gpsEw_indicator">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 255);</string>
+         </property>
+         <property name="text">
+          <string>E</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_gpsLatitude">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 255);</string>
+         </property>
+         <property name="text">
+          <string>30.1231</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_gpsNs_indicator">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 255);</string>
+         </property>
+         <property name="text">
+          <string>S</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_gpsTime">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 255);</string>
+         </property>
+         <property name="text">
+          <string>16:10:00</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_gpsDate">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 255);</string>
+         </property>
+         <property name="text">
+          <string>2015-10-01</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_gpsStatus">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 255);</string>
+         </property>
+         <property name="text">
+          <string>2</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_gpsSatellite">
+         <property name="styleSheet">
+          <string notr="true">color: rgb(0, 0, 255);</string>
+         </property>
+         <property name="text">
+          <string>7</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <zorder>label</zorder>
+  <zorder>label_1</zorder>
+  <zorder>line</zorder>
+  <zorder>pushButton_manualRefresh</zorder>
+  <zorder>label_wirelessShow</zorder>
+  <zorder>groupBox</zorder>
+  <zorder>groupBox_1</zorder>
+ </widget>
+ <resources>
+  <include location="../bicycle.qrc"/>
+ </resources>
+ <connections/>
+</ui>

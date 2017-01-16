@@ -1,0 +1,390 @@
+
+2016-04-12：
+一、工程修改：
+1.增加recharge_service.cpp、recharge_service.h、recharge_service_ui.ui和ui_recharge_service_ui.h文件
+
+
+二、on_off_card_task.cpp修改：
+1.增加充值功能
+
+三、lnt.h修改：
+1.增加充值流程阶段1~4的结构体
+
+2.增加宏#define LNT_MOC_ERROR_UNKNOW	0xEE  //未知错误
+
+3.修改宏：
+#define AGENT_OFF_CARD_STAGE5
+#define AGENT_OFF_CARD_STAGE6
+#define AGENT_OFF_CARD_STAGE9
+#define AGENT_OFF_CARD_STAGE10
+
+4.增加充值命令的宏定义：
+#define AGENT_RECHARGE_STAGE1 ~ #define AGENT_RECHARGE_STAGE18
+
+5.枚举enum AGENT_TYPE增加变量：AGENT_RECHARGE = 0x05 //充值
+
+6.结构体struct agent_extra_data增加成员：unsigned char order[10]和unsigned int recharge
+
+7.结构体struct lnt_agent_off_card_stage23_CTS增加成员：unsigned char order[10]和unsigned int recharge
+
+四、lib_lnt.h修改：
+1.新增充值函数：
+enum AGENT_ERR lib_lnt_recharge_stage1TO2_process(const int sockfd, lnt_agent_recharge_stage1_CTS_t *stage1, lnt_agent_recharge_stage2_STC_t *stage2, agent_extra_data_t *extra);
+enum AGENT_ERR lib_lnt_recharge_stage3TO4_process(const int sockfd, agent_extra_data_t *extra, lnt_agent_recharge_stage4_STC_t *stage4);
+enum AGENT_ERR lib_lnt_recharge_stage5TO6_process(const int sockfd, agent_extra_data_t *extra, recharge_info_t *recharge,  lnt_packet_recharge_stage2_STC_t *recharge_stage2);
+enum AGENT_ERR lib_lnt_recharge_stage7TO8_process(const int sockfd, agent_extra_data_t *extra,  lnt_packet_recharge_stage2_STC_t *recharge_stage2, lnt_packet_recharge_stage4_STC_t *recharge_stage4);
+enum AGENT_ERR lib_lnt_recharge_stage9TO10_process(const int sockfd, agent_extra_data_t *extra, lnt_packet_recharge_stage4_STC_t *recharge_stage4, lnt_packet_recharge_stage6_STC_t *recharge_stage6);
+enum AGENT_ERR lib_lnt_recharge_stage11TO12_process(const int sockfd, agent_extra_data_t *extra, lnt_packet_recharge_stage6_STC_t *recharge_stage6, lnt_packet_recharge_stage8_STC_t *recharge_stage8);
+enum AGENT_ERR lib_lnt_recharge_stage13TO14_process(const int sockfd, agent_extra_data_t *extra, lnt_packet_recharge_stage8_STC_t *recharge_stage8, lnt_packet_recharge_stage10_STC_t *recharge_stage10, int *r_cpu_load);
+enum AGENT_ERR lib_lnt_recharge_stage15TO16_process(const int sockfd, agent_extra_data_t *extra, lnt_packet_recharge_stage10_STC_t *recharge_stage10, lnt_packet_recharge_stage12_STC_t *recharge_stage12);
+enum AGENT_ERR lib_lnt_recharge_stage17TO18_process(const int sockfd, agent_extra_data_t *extra, lnt_agent_off_card_stage24_STC_t *stage24, agent_retransmission_data_t *retrans);1、
+
+
+2016-05-04：
+一、lnt.h修改：
+1.增加第三方平台扣费的开卡流程阶段1的结构体：
+struct lnt_agent_on_card_otherConsume_stage1_CTS
+{
+	unsigned char pid[8];			//票卡物理卡号
+	unsigned char macaddr[6];		//MAC地址
+	unsigned char pki[4];			//PKI卡号
+
+	unsigned char consume_number[10];	//第三方平台扣费凭证号
+	unsigned char time[6];                    //时间 
+}__attribute__((packed)); 
+typedef  struct lnt_agent_on_card_otherConsume_stage1_CTS lnt_agent_on_card_otherConsume_stage1_CTS_t;
+
+2.增加第三方平台扣费的开卡流程阶段5(开卡结果上报)的结构体：
+struct lnt_agent_on_card_otherConsume_stage7_CTS
+{
+	unsigned char pid[8];			//票卡物理卡号
+	unsigned char macaddr[6];		//MAC地址
+	unsigned char pki[4];			//PKI卡号
+	unsigned int pkt_sn;			//报文流水号
+	unsigned char indcode[8];    	//流程指示码
+	unsigned char result;			//结果
+	unsigned char consume_number[10];	//第三方平台扣费凭证号
+	unsigned char time[6];          //时间 
+}__attribute__((packed)); 
+typedef  struct lnt_agent_on_card_otherConsume_stage7_CTS lnt_agent_on_card_otherConsume_stage7_CTS_t;
+
+
+3.结构体struct agent_extra_data增加成员：unsigned char consume_number[10];	//第三方平台扣费凭证号
+
+4.增加开卡命令(第三方平台扣费)：
+#define AGENT_ON_CARD_OTHER_CONSUME_STAGE1				0xBB07  //[开卡会员申请]
+#define AGENT_ON_CARD_OTHER_CONSUME_STAGE2				0xBB08
+
+#define AGENT_ON_CARD_OTHER_CONSUME_STAGE3				0xDD73 //[修改押金标志]
+#define AGENT_ON_CARD_OTHER_CONSUME_STAGE4				0xDD74
+
+#define AGENT_ON_CARD_OTHER_CONSUME_STAGE5				0xBB22  //[开卡结果上报]
+#define AGENT_ON_CARD_OTHER_CONSUME_STAGE6				0xBB23
+
+
+4.枚举enum AGENT_TYPE增加成员：AGENT_OTHER_CONSUME = 0x06,  //第三方平台扣费
+
+5.增加第三方平台扣费的开卡函数：
+enum AGENT_ERR lib_lnt_on_card_otherConsume_stage1TO2_process(const int sockfd, lnt_agent_on_card_otherConsume_stage1_CTS_t*stage1, lnt_agent_on_card_stage2_STC_t *stage2); 
+
+enum AGENT_ERR lib_lnt_on_card_otherConsume_stage3TO4_process(const int sockfd, agent_extra_data_t *extra, lnt_member_process_stage2_STC_t *member_stage2, unsigned char *stat); 
+
+enum AGENT_ERR lib_lnt_on_card_otherConsume_stage5TO6_process(const int sockfd, agent_extra_data_t *extra, lnt_agent_on_card_stage8_STC_t *stage8, agent_retransmission_data_t *retrans); 
+
+二、lnt.c修改：
+1.增加第三方平台扣费的开卡函数：
+enum AGENT_ERR lib_lnt_on_card_otherConsume_stage1TO2_process(const int sockfd, lnt_agent_on_card_otherConsume_stage1_CTS_t*stage1, lnt_agent_on_card_stage2_STC_t *stage2); 
+
+enum AGENT_ERR lib_lnt_on_card_otherConsume_stage3TO4_process(const int sockfd, agent_extra_data_t *extra, lnt_member_process_stage2_STC_t *member_stage2, unsigned char *stat); 
+
+enum AGENT_ERR lib_lnt_on_card_otherConsume_stage5TO6_process(const int sockfd, agent_extra_data_t *extra, lnt_agent_on_card_stage8_STC_t *stage8, agent_retransmission_data_t *retrans); 
+
+static enum AGENT_ERR __agent_pkt_data_on_card_otherConsume_explain(struct agent_pkt_ptr *agent_ptr);
+
+
+三、gui修改：
+1.增加界面文件on_card_service_ui.ui和on_card_service_otherConsume_ui.ui
+2.增加源文件on_card_service_dlg.cpp和on_card_service_otherConsume_dlg.cpp
+3.增加头文件on_card_service_dlg.h和on_card_service_otherConsume_dlg.h
+
+
+
+2016-05-17:
+一、thread_task_handle.cpp修改：
+1、异常处理加入消费失败的判断和提示
+
+二、member_info_query_dlg.cpp修改：
+1、可用积分显示修改
+
+三、rent_info_query_dlg.cpp修改：
+1、第一条记录自行车编号解释的修改
+
+
+
+2016-05-20:
+一、工程修改：
+1、新增qrcode.h、ui_qrcode.h、myqrencode.h、qrcode.cpp、myqrencode.cpp和libqrencode.a
+
+二、修改gui_header.h、lib_gui.h和libgui.a，中心签到数据中新增网点二维码数据
+
+
+2016-05-27:
+一、rent_info_query_dlg.cpp修改：
+1、租还车记录查询由8条改为6条，界面也相应改动
+
+
+2016-06-17:
+一、delay_return_bicycle_dlg.cpp修改：
+1、执行延时还车操作时若已还车的情况修改提示
+
+
+
+
+2016-06-21:
+一、thread_task_handle.cpp修改：
+1、修改异常处理的部分提示信息（中心返回正常和扣费后的提示）
+
+
+2016-06-27:
+一、lnt.c修改：
+销卡、充值若DD12返回0xBB（未签到）则通知线程重新签到
+
+
+2016-07-04:
+一、basic_info_dlg.cpp修改：
+3/4G网络状态根据获取到的节点机设备配置里的网络接入方式和从页面配置信息获取到的3/4G网络状态来判断
+
+
+2016-07-27:
+一、rent_info_query_dlg.cpp修改：
+函数__explainRentInfoTime增加源字符串src的判断，若为空则说明未还车，直接返回，修复未还车时还车时间显示乱码问题。
+
+
+2016-08-04:
+增加读卡器固件升级，具体如下：
+linnantong工程：
+一、lnt.c修改：
+增加读卡器升级接口：int lib_lnt_reader_update(char *firmware_path)；
+
+二、lnt.h修改：
+增加关于读卡器升级的结构体：struct update_stat_set、struct pre_update_ack和struct update_ack；
+
+三、lib_lnt.h修改：
+1、增加表示读卡器升级状态的枚举变量enum UPDATE_STATUS；
+2、增加读卡器升级接口int lib_lnt_reader_update(char *firmware_path);和获取读卡器升级状态接口enum UPDATE_STATUS lib_get_update_status(void);接口的具体实现在device.c。
+
+bicycle_gui工程：
+四、bicycle_dlg.cpp修改：
+1、BicycleDlg中增加共享内存用于通知upgrade_app进程读卡器升级结果；
+2、__getPageConfig中增加读卡器升级线程lnt_update_thread；
+3、lib_lnt_get_version增加前提条件：读卡器没有正在升级；
+4、gui_header.h修改结构体struct gui_ndev_home_page_info：
+增加成员unsigned char lnt_firmware_update_flag:1;和char lnt_firmware_path[96];
+5、增加保存读卡器固件版本到文本的接口：static void  __lnt_firmware_version_put(char version[24])；
+
+
+五、basic_info_dlg.cpp中__setPageConfig修改：
+lib_lnt_get_version增加前提条件：读卡器没有正在升级；
+
+六、device_info_dlg.cpp中__getPageConfig修改：
+lib_lnt_get_version增加前提条件：读卡器没有正在升级；
+
+bicycle工程：
+七、gui.c修改：
+1、__async_handle_thread中case GUI_CMD_GET_NDEV_HOME_PAGE_INFO_SATGE1增加读卡器升级信息；
+
+八、ndev_protocol.c修改：
+1、增加从文本读取读卡器固件版本的接口：static int __lnt_firmware_version_fgets(char version[24])；
+2、心跳函数int ndev_protocol_bheart_level1_req(void *ptr, void *limit)里增加上传岭南通读卡器固件版本，以供中心判断读卡器是否升级成功。
+
+upgrade_app工程：
+九、upgrade_app.c修改：
+1、__upgrade_thread修改读卡器升级部分。
+
+libgui:
+十：gui_header.h修改：
+结构体struct gui_ndev_home_page_info增加成员：
+unsigned char lnt_firmware_update_flag:1;	//岭南通固件升级标记
+char lnt_firmware_path[96]; 	 		//岭南通读卡器升级固件路径
+
+
+2016-08-05:
+一、member_info_query_dlg.cpp修改：
+__getPageConfig中修改会员信息查询中可用积分字节序。
+
+
+2016-08-17:
+一、bicycle_dlg.cpp修改：
+1、slots_timerDone中获取到读卡器固件信息后写入配置文件保存读卡器版本信息，供签到数据用，防止读卡器没升级的情况下配置文件里的版本信息为空。
+
+
+2016-09-14:
+一、wireless_dlg.cpp修改：
+1、__setPageConfig中关于gps经纬度处理函数__DoubleToQString改为__DoubleToQStringV2。（by zyp）
+
+2016-10-12:（by djs and zjc）
+bicycle_gui工程：
+一、wireless_dlg.cpp修改：
+1、__setPageConfig中的label_wlSysMode增加4g的信息。
+
+二、basic_info_dlg.cpp修改：
+2、__setPageConfig中的label_systemMode增加4g的信息。
+
+三、libwireless.a和lib_wireless.h改为4g版本,如需使用3g要换回3g版本！
+
+
+2016-10-13:（by zjc）
+bicycle工程：
+一、node_device.c修改：
+1、__ndev_unity_file_mng_thread中ftp下载超时由180s改为600s，增加宏CONFS_FTP_DOWNLOAD_TIMEOUT。
+
+linnantong工程：
+一、lnt.c修改：
+1、岭南通签到线程__lnt_register_entry中创建套接字前屏蔽掉关闭套接字的接口__lnt_register_disconnect_to_server(sockfd);，尝试解决界面显示乱码问题。
+
+bicycle_gui工程：
+一、device_info_dlg.cpp修改：
+1、__setPageConfig里的岭南通读卡器信息由pki_r改为pki_RO，修复读卡器签到失败查询不到PKI问题。
+
+
+2016-10-14:
+bicycle_gui工程：
+一、wireless_dlg.cpp修改：
+1、当gps_info.gga.status == 0时，gps的状态由“未定位”改为“搜索中”，颜色由红色改为蓝色。
+
+
+2016-10-17:
+bicycle_gui工程：
+一、member_info_query_dlg.cpp修改：
+1、__getPageConfig中return LNT_MOC_ERROR_LILIN_NOT_MEMBER_CARD的条件改为：
+if(((lnt_qry_ticket.ticket.pmflag != 0xFF) && (pf.pflag != 1)) || (lnt_qry_ticket.ticket.pmflag == 0xFF))，修复非会员卡可以查询会员信息的bug。
+
+
+
+2016-10-18:
+bicycle_gui工程：
+一、wireless_dlg.cpp修改：
+1、__setPageConfig中gps信息的显示改成如果模块获取到经纬度就保存到文件，如果获取不到就从之前保存的文件中读取。
+
+
+
+2016-10-19:
+bicycle工程：
+一、node_device.c修改：
+1、均衡负载申请的发包函数由lib_udp_sendto_select改为lib_udp_sendto，并增加部分日志。（by djs）
+
+
+2016-10-24:
+bicycle工程：
+一、node_device.c修改：
+1、均衡负载申请的UDP套接字创建由lib_udp_client_nonb_new改为lib_udp_client_new。（by djs）
+
+bicycle_gui工程：
+一、helper.h中增加leftShiftNum和gpsTransform，用于转换gps的经纬度格式。
+
+2016-10-27:
+一、node_device.c修改：
+1、修改均衡负载申请里的网络状态检查，使其检查结果不影响程序流程；
+2、去掉设备注册里的网络状态检查，不将节点机的网络状态通知给桩机。
+
+
+2016-10-28:
+bicycle_gui工程：
+一、on_off_card_task.cpp修改：
+1、修改开销卡检查押金标志失败的处理和开销卡结果的提示信息；
+
+二、member_info_query_dlg.cpp修改：
+2、修改会员信息查询里的租还车标志的显示，只有租还车标志里租车位为1就显示已租车。
+
+三、delay_return_bicycle_dlg.cpp修改：
+1、修改延时还车，如果已经延时还车则不进行处理。
+
+
+2016-11-01:
+bicycle_gui工程：
+一、on_off_card_task.cpp修改：
+1、增加销卡流程中押金处理前的检查押金标志以及后续处理；
+2、修改开销卡过程中押金处理失败或者检查押金处理失败后的提示信息;
+3、异常处理处如果交易记录为全0（消费失败或者获取交易记录失败导致）则不上传到中心。
+
+
+2016-11-24:
+bicycle_gui工程：
+一、member_info_query_dlg.cpp修改：
+1、修改租还车标志位的位序（和原来的位序相反）。
+
+二、on_off_card_task.cpp修改：
+1、修改销卡里的是否已租车判断（租车位由bit0改为bit3）。
+
+
+2016-11-28:
+upgrade_app工程：
+一、upgrade_app.c修改：
+1、__ftp_download中设置当传输速度<2900字节/秒持续10秒时,重新开始下载：
+curl_easy_setopt(curl_download, CURLOPT_LOW_SPEED_LIMIT, 2900L); 
+curl_easy_setopt(curl_download, CURLOPT_LOW_SPEED_TIME, 10L); 
+
+
+wireless_app工程：
+一、wireless.c修改：
+1、wl_handle_thread中增加检测到SIM卡不存在时的处理策略：先软复位3G模块，再重启3G模块，再复位USB HUB芯片，再重启节点机。
+2、wl_handle_thread中增加检测到ttyusb1不存在时的处理策略：先复位USB HUB芯片，再重启节点机。
+3、wl_handle_thread中修改拨号失败后的处理策略：
+dial_fail_handle(dial_cnt); //拨号超时处理:1.复位模块 2.重启模块 3.重启系统
+
+
+bicycle_gui工程：
+一、bicycle_dlg.cpp修改：
+1、修改主界面二维码的显示。
+
+二、member_info_query_dlg.cpp修改：
+1、修改会员信息查询中租还车标志位的显示。
+
+
+
+2016-12-02:
+bicycle_gui工程：
+一、member_info_query_dlg.cpp修改：
+1、__getPageConfig中普通卡的会员信息查询里的限额改为“-”。
+
+二、delay_return_bicycle_dlg.cpp修改：
+1、修改延时还车中租还车标志位的显示以及将满桩标志位由最高位改为最低位。
+
+三、bicycle_dlg.cpp修改：
+1、slots_entryMangageDlg中增加管理卡有效期判断。
+
+
+upgrade_app工程：
+一、upgrade_app.c修改：
+1、去掉__ftp_download中设置当传输速度<2900字节/秒持续10秒时,重新开始下载：
+curl_easy_setopt(curl_download, CURLOPT_LOW_SPEED_LIMIT, 2900L); 
+curl_easy_setopt(curl_download, CURLOPT_LOW_SPEED_TIME, 10L); 
+
+
+2016-12-05:
+bicycle_gui工程：
+一、member_info_query_dlg.cpp修改：
+1、__getPageConfig中会员信息查询中新增票卡有效期判断并作相应提示。
+
+
+2016-12-06:
+linnangtong工程：
+1、新增用于判断票卡有效期的接口：enum LNT_CARD_VALID_FLAG lib_lnt_is_valid_card(void)；
+
+bicycle_gui工程：
+一、member_info_query_dlg.cpp修改：
+1、__getPageConfig中会员信息查询中票卡有效期判断新增条件：如果启用时间晚于当前时间的判断为无效，并封装接口在liblnt.a库中。
+
+2、on_off_card_task.cpp里面销卡流程中新增票卡有效期判断。
+
+
+
+
+
+
+
+
+
+
+
+
