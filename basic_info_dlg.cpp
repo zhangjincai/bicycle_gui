@@ -301,7 +301,7 @@ void BasicInfoDlg::__setPageConfig(void)
 
 	//printf("----------basic_info:up_thr_runing:%d\n",up_thr_runing);
 #if 1
-	#if CONFS_USING_READER_UPDATE//CONFS_USING_TEST_BY_ZJC
+	#if CONFS_USING_READER_UPDATE
 	if(up_thr_runing == 0) //读卡器升级期间不能操作读卡器!!!
 		lib_lnt_get_version(&lnt_ver_ack, &stat, 200);
 	#else

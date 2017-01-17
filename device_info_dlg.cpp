@@ -106,7 +106,7 @@ int DeviceInfoDlg::__getPageConfig(void)
 
 	memset(&lnt_ver_ack.version, 0, sizeof(lib_lnt_getversion_ack_t));
 #if 1
-	#if CONFS_USING_READER_UPDATE//#if CONFS_USING_TEST_BY_ZJC
+	#if CONFS_USING_READER_UPDATE
 	if(up_thr_runing == 0) //读卡器升级期间不能操作读卡器!!!
 		m_ret = lib_lnt_get_version(&lnt_ver_ack, &m_stat, 100);
 	#else

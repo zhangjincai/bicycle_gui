@@ -46,7 +46,7 @@ enum UPE_TYPE			//更新类型
 /*
  * 读卡器固件升级功能开启与否 1:开启 0:关闭
  */
-#define CONFS_USING_READER_UPDATE		0
+#define CONFS_USING_READER_UPDATE		1
 
 /*
  * 节点机自动重启 1:开启 0:关闭

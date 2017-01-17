@@ -212,7 +212,7 @@ int main(int argc, char *argv[])
   
 
 	lnt_config.delay_ms = 15000;  //ÑÓ³ÙºÁÃë
-	#if CONFS_USING_READER_UPDATE // CONFS_USING_TEST_BY_ZJC
+	#if CONFS_USING_READER_UPDATE 
 	if(up_thr_runing == 0) //¶Á¿¨Æ÷Éý¼¶ÆÚ¼ä²»ÄÜ²Ù×÷¶Á¿¨Æ÷!!!
 	#endif
 		err = lib_lnt_init(&lnt_config);

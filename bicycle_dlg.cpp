@@ -148,7 +148,7 @@ BicycleDlg::BicycleDlg(QWidget *parent) : QDialog(parent)
     connect(&timer1, SIGNAL(timeout()), this, SLOT(slots_timer1Done()));//羊城通充值提示
 
 	
-#if CONFS_USING_READER_UPDATE//CONFS_USING_TEST_BY_ZJC //读卡器升级结果通知初始化
+#if CONFS_USING_READER_UPDATE //读卡器升级结果通知初始化
 	memset(&update_result, 0, sizeof(update_result));
 	update_result.type = UPE_TYPE_LNT_ZM;
 	update_result.result = 0;
@@ -736,30 +736,12 @@ int BicycleDlg::__getPageConfig(const unsigned int stage)
 
 				//printf("----------reader update status:%d\n", lib_get_update_status());
 
-				#if CONFS_USING_READER_UPDATE
-				fprintf(stderr, "--------Bicycle_gui, lnt_firmware_update_flag:%d\n", home_page_info.lnt_firmware_update_flag);
+			#if CONFS_USING_READER_UPDATE
+				fprintf(stderr, "\n--------Bicycle_gui, lnt_firmware_update_flag:%d\n", home_page_info.lnt_firmware_update_flag);
 				//fprintf(stderr, "------------gui:lnt_firmware_path:%s\n", home_page_info.lnt_firmware_path);
+				#if 0 //下发完才判断版本是否需要升级
 				if(home_page_info.lnt_firmware_update_flag == 1) //有读卡器固件需要升级
 				{
-					#if 0
-					//执行固件升级
-					printf("--------start update reader ...\n");
-					retval = lib_lnt_reader_update(home_page_info.lnt_firmware_path);
-					printf("-------gui:update_result:%d\n", update_result.result);
-
-					memset(&update_result, 0, sizeof(update_result));
-					update_result.type = UPE_TYPE_LNT_ZM;
-					update_result.result = retval;
-					memcpy(&update_result.ftp_local_path, &home_page_info.lnt_firmware_path, sizeof(update_result.ftp_local_path));
-
-					//通过共享内存通知bicycle进程升级结果
-					retval = lib_share_mem_init(&upe_mid, UPE_SHART_MEM_KEY, sizeof(lnt_firmware_update_result_t) + 16);
-					lib_share_mem_write(upe_mid, 0, (char *)&update_result, sizeof(lnt_firmware_update_result_t));
-					
-					//升级完通知bicycle进程清除固件信息
-					//lib_gui_clr_lnt_firmware_info(g_gui, &update_result, 200); //retval:升级结果 1:成功,2:失败
-
-					#else
 					char lnt_firmware_path[96]; //用于字符串分割，防止分割后修改源字符串
 					memcpy(&lnt_firmware_path, &home_page_info.lnt_firmware_path, sizeof(lnt_firmware_path));
 
@@ -773,7 +755,6 @@ int BicycleDlg::__getPageConfig(const unsigned int stage)
 					}
 					//printf("-----------new version:%s\n", pre_buf);
 
-					#if 1
 					lnt_getversion_ack_t version;
 					unsigned char stat = -1;
 					if(up_thr_runing == 0) //防止干扰正在升级的线程!
@@ -802,16 +783,38 @@ int BicycleDlg::__getPageConfig(const unsigned int stage)
 						update_result.result = 3; //用于通知upgrade_app进程不需要升级读卡器,防止upgrade_app进程不必要的一直读升级结果
 						lib_share_mem_write(upe_mid, 0, (char *)&update_result, sizeof(lnt_firmware_update_result_t));
 					}	
-					#endif
-					#endif
 				}   
+				#else //下载前判断版本是否需要升级
+				if(home_page_info.lnt_firmware_update_flag == 1)
+				{
+					printf("------------Reader need to update ...\n");
+					
+					if(up_thr_runing == 0) //已有升级线程运行则不创建升级线程
+					{
+						pthread_t lnt_update_thr;
+						   
+						lib_normal_thread_create(&lnt_update_thr, lnt_update_thread, &home_page_info); //读卡器升级线程
+						up_thr_runing = 1;	
+					}
+				}
+				/*
+				else //下载前判断版本是否需要升级的要注释掉此处，因为下载耗时的原因
+				{
+					printf("------------Reader don't need to update ...\n");
+
+					update_result.type = UPE_TYPE_LNT_ZM;
+					//update_result.result = 3; //用于通知upgrade_app进程不需要升级读卡器,防止upgrade_app进程不必要的一直读升级结果
+					lib_share_mem_write(upe_mid, 0, (char *)&update_result, sizeof(lnt_firmware_update_result_t));
+				}	
+				*/
 				#endif
+			#endif /* #if CONFS_USING_READER_UPDATE */
 				__setPageConfig();
 			}
 		}
 
 	#if 1
-		#if CONFS_USING_READER_UPDATE//#if CONFS_USING_TEST_BY_ZJC
+		#if CONFS_USING_READER_UPDATE
 		if(up_thr_runing == 0) //读卡器升级期间不能操作读卡器!!!
 		#endif
 	#endif
@@ -1019,7 +1022,7 @@ void BicycleDlg::keyPressEvent(QKeyEvent *e)
 }
    
 
-#if CONFS_USING_READER_UPDATE//CONFS_USING_TEST_BY_ZJC
+#if CONFS_USING_READER_UPDATE
 static void *lnt_update_thread(void *arg)
 {
 	char retval = -1, up_cnt = 0;
@@ -1059,10 +1062,6 @@ static void *lnt_update_thread(void *arg)
 			
 			__lnt_firmware_version_put(version); //保存最新的岭南通读卡器版本
 		}
-		#if 0
-		result.result = retval;
-		lib_gui_lnt_update_result_notify(g_gui, &result, 100); //通知bicycle进程读卡器升级结果
-		#endif
 		
 		lib_sleep(8); //等待upgrade_app读取升级结果,防止还没读取到升级结果就再次创建线程升级!
 		break; 
