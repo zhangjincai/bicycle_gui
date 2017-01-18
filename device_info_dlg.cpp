@@ -294,8 +294,8 @@ void DeviceInfoDlg::__setPageConfig(void)
 		SYS_LOG_DEBUG("ERROR:open net backup info for read failed!");
 	}
 
-	printf("----2----read: rx_bytes:%lld, tx_bytes:%lld, total_bytes:%lld\n",\
-		net_info_backup.rx_bytes, net_info_backup.tx_bytes, net_info_backup.total_bytes);
+	//printf("----2----read: rx_bytes:%lld, tx_bytes:%lld, total_bytes:%lld\n",\
+		//net_info_backup.rx_bytes, net_info_backup.tx_bytes, net_info_backup.total_bytes);
 	
 	r_bytes = (float)net_info_backup.rx_bytes/1024; //以K为单位
 	t_bytes = (float)net_info_backup.tx_bytes/1024;

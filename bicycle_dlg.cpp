@@ -412,7 +412,7 @@ void BicycleDlg::slots_timerDone(void)
 	}	
 #endif
 
-#if CONFS_USING_NET_FLOW_BACKUP
+#if CONFS_USING_NET_FLOW_BACKUP //改为在bicycle进程进行备份 2017-01-18
 	/* 重启系统前保存网卡信息 2016-12-21 */
 	netCount++;
 	if(netCount == 2)
