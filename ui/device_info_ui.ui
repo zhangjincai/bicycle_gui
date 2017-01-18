@@ -693,34 +693,18 @@
     <rect>
      <x>360</x>
      <y>300</y>
-     <width>251</width>
+     <width>271</width>
      <height>181</height>
     </rect>
    </property>
    <property name="title">
     <string>网卡信息</string>
    </property>
-   <widget class="QLabel" name="label_18">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>158</y>
-      <width>231</width>
-      <height>18</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 0, 0);</string>
-    </property>
-    <property name="text">
-     <string>注：要更新显示请先返回主界面！</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="label_23">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>135</y>
+      <y>140</y>
       <width>231</width>
       <height>18</height>
      </rect>
@@ -751,7 +735,7 @@
     <rect>
      <x>430</x>
      <y>331</y>
-     <width>175</width>
+     <width>191</width>
      <height>16</height>
     </rect>
    </property>
@@ -783,7 +767,7 @@
     <rect>
      <x>430</x>
      <y>360</y>
-     <width>175</width>
+     <width>191</width>
      <height>16</height>
     </rect>
    </property>
@@ -815,7 +799,7 @@
     <rect>
      <x>450</x>
      <y>390</y>
-     <width>155</width>
+     <width>171</width>
      <height>16</height>
     </rect>
    </property>
