@@ -61,5 +61,11 @@ enum UPE_TYPE			//更新类型
 /* 网卡信息备份路径 2016-12-21 */
 //#define	NET_INFO_BACKUP_PATH	"/opt/logpath/net_info.txt"
 
+/*
+ * 网卡信息备份 1:开启 0:关闭
+ */
+#define CONFS_USING_NET_FLOW_BACKUP		0
+
+
 
 #endif

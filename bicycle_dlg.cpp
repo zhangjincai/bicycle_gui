@@ -412,7 +412,7 @@ void BicycleDlg::slots_timerDone(void)
 	}	
 #endif
 
-#if 1
+#if CONFS_USING_NET_FLOW_BACKUP
 	/* 重启系统前保存网卡信息 2016-12-21 */
 	netCount++;
 	if(netCount == 2)
